@@ -1,0 +1,92 @@
+<!-- 星座詳細分析頁面 -->
+<div class="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 py-8 px-4">
+  @if (currentZodiac(); as zodiac) {
+    <!-- 返回按鈕 -->
+    <div class="max-w-2xl mx-auto mb-6">
+      <button
+        (click)="goBack()"
+        class="flex items-center gap-2 text-white hover:text-purple-200 transition-colors duration-300"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回星座選擇
+      </button>
+    </div>
+
+    <!-- 主要內容容器 -->
+    <div class="max-w-2xl mx-auto">
+      <!-- 星座標題卡片 -->
+      <div class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-2xl p-8 mb-8 text-center">
+        <div class="text-8xl mb-4">{{ zodiac.emoji }}</div>
+        <h1 class="text-4xl font-bold text-white mb-2">{{ zodiac.name }}</h1>
+        <p class="text-2xl text-purple-200 mb-2">{{ zodiac.englishName }}</p>
+        <p class="text-lg text-purple-300">{{ zodiac.dates }}</p>
+      </div>
+
+      <!-- 配對分析卡片 -->
+      <div class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-2xl p-8 mb-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="text-3xl">💕</div>
+          <h2 class="text-2xl font-bold text-pink-300">最佳配對分析</h2>
+        </div>
+        <div class="bg-white bg-opacity-5 rounded-xl p-6">
+          <p class="text-white text-lg leading-relaxed">
+            {{ getBestMatch(zodiac.englishName) }}
+          </p>
+        </div>
+      </div>
+
+      <!-- 性格特質卡片 -->
+      <div class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-2xl p-8 mb-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="text-3xl">⚡</div>
+          <h2 class="text-2xl font-bold text-yellow-300">性格特質</h2>
+        </div>
+        <div class="bg-white bg-opacity-5 rounded-xl p-6">
+          <p class="text-white text-lg leading-relaxed">
+            {{ getPersonality(zodiac.englishName) }}
+          </p>
+        </div>
+      </div>
+
+      <!-- 愛情運勢卡片 -->
+      <div class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-2xl p-8 mb-8">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="text-3xl">🌟</div>
+          <h2 class="text-2xl font-bold text-blue-300">愛情運勢建議</h2>
+        </div>
+        <div class="bg-white bg-opacity-5 rounded-xl p-6">
+          <p class="text-white text-lg leading-relaxed">
+            在愛情中，{{ zodiac.name }}需要的是理解和包容。建議多與伴侶溝通，分享內心的想法和感受。
+            記住，最好的愛情是彼此成就，而不是改變對方。
+          </p>
+        </div>
+      </div>
+
+      <!-- 底部返回按鈕 -->
+      <div class="text-center">
+        <button
+          (click)="goBack()"
+          class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
+        >
+          選擇其他星座
+        </button>
+      </div>
+    </div>
+  } @else {
+    <!-- 載入中或錯誤狀態 -->
+    <div class="min-h-screen flex items-center justify-center">
+      <div class="text-center">
+        <div class="text-4xl mb-4">🔍</div>
+        <p class="text-white text-xl">找不到指定的星座</p>
+        <button
+          (click)="goBack()"
+          class="mt-4 text-purple-300 hover:text-white transition-colors"
+        >
+          返回首頁
+        </button>
+      </div>
+    </div>
+  }
+</div>
