@@ -14,7 +14,9 @@
       "WebSearch",
       "Bash(xcopy:*)",
       "Bash(del:*)",
-      "Bash(robocopy:*)"
+      "Bash(robocopy:*)",
+      "Bash(npm start)",
+      "Bash(ng serve:*)"
     ],
     "deny": [],
     "ask": []

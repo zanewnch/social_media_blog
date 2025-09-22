@@ -1,62 +1,66 @@
 <!-- Full Screen Images with Snap Scroll -->
-<section class="snap-y snap-mandatory overflow-y-scroll h-screen" aria-label="Image Gallery">
+<div class="snap-y snap-mandatory overflow-y-scroll h-screen">
   <!-- First Image Screen -->
-  <div class="snap-start h-screen w-full flex items-center justify-center bg-gray-50">
+  <section class="snap-start h-screen w-full flex items-center justify-center bg-gray-50">
     <img
       src="assets/images/19985_0.jpg"
       alt="Hero Image 1"
       class="max-h-full max-w-full object-contain"
     />
-  </div>
+  </section>
 
   <!-- Second Image Screen -->
-  <div class="snap-start h-screen w-full flex items-center justify-center bg-gray-100">
+  <section class="snap-start h-screen w-full flex items-center justify-center bg-gray-100">
     <img
       src="assets/images/19986_0.jpg"
       alt="Hero Image 2"
       class="max-h-full max-w-full object-contain"
     />
-  </div>
+  </section>
 
-  <!-- Content Section -->
-  <div class="snap-start h-screen w-full">
-    
-  </div>
-</section>
+  <!-- 星座區 -->
+  <section class="snap-start h-screen w-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
 
-<section class="snap-start h-screen w-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
   <!-- 星座區標題 -->
-  <div class="text-center mb-8 sm:mb-10 md:mb-12">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 md:mb-4">✨ 星座運勢 ✨</h2>
-    <p class="text-base sm:text-lg md:text-xl text-purple-200">選擇你的星座，探索今日運勢</p>
-  </div>
+  <header class="text-center mb-8 sm:mb-10 md:mb-12">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 md:mb-4">💕 星座配對 💕</h2>
+    <p class="text-base sm:text-lg md:text-xl text-purple-200">選擇你的星座，找出最配的另一半</p>
+  </header>
 
   <!-- 星座按鈕網格 -->
-  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mb-6 sm:mb-7 md:mb-8">
+  <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mb-6 sm:mb-7 md:mb-8">
     @for (zodiac of zodiacs; track zodiac.englishName) {
-      <button
-        (click)="selectZodiac(zodiac)"
-        class="group relative bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 lg:p-6 transition-all duration-300 hover:bg-opacity-20 active:scale-95 sm:hover:scale-105 hover:shadow-2xl"
-        [class.ring-2]="selectedZodiac() === zodiac"
-        [class.sm:ring-4]="selectedZodiac() === zodiac"
-        [class.ring-yellow-300]="selectedZodiac() === zodiac"
-        [class.bg-opacity-30]="selectedZodiac() === zodiac"
-      >
-        <div class="text-center">
-          <div class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1 sm:mb-2">{{ zodiac.emoji }}</div>
-          <div class="text-white font-semibold text-xs sm:text-sm md:text-base">{{ zodiac.name }}</div>
-          <div class="text-purple-200 text-xs sm:text-xs md:text-sm mt-0.5 sm:mt-1">{{ zodiac.dates }}</div>
-        </div>
-
-        <!-- 選中時的光暈效果 -->
-        @if (selectedZodiac() === zodiac) {
-          <div class="absolute inset-0 rounded-lg sm:rounded-xl bg-yellow-300 bg-opacity-20 animate-pulse"></div>
-        }
-      </button>
+      @if (selectedZodiac() === zodiac) {
+        <!-- 選中狀態的按鈕 -->
+        <button
+          (click)="selectZodiac(zodiac)"
+          class="relative bg-white bg-opacity-30 backdrop-blur-sm border border-white border-opacity-20 rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-opacity-40 active:scale-95 sm:hover:scale-105 hover:shadow-2xl p-2 sm:p-3 md:p-4 lg:p-6 ring-4 ring-yellow-300"
+        >
+          <div class="text-center">
+            <div class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1 sm:mb-2">{{ zodiac.emoji }}</div>
+            <div class="text-xs sm:text-sm md:text-base text-purple-900 font-bold">{{ zodiac.name }}</div>
+            <div class="text-xs md:text-sm text-purple-800 mt-0.5 sm:mt-1">{{ zodiac.dates }}</div>
+          </div>
+          <!-- 選中時的光暈效果 -->
+          <div class="absolute inset-0 bg-yellow-300 bg-opacity-20 animate-pulse rounded-lg sm:rounded-xl"></div>
+        </button>
+      } @else {
+        <!-- 未選中狀態的按鈕 -->
+        <button
+          (click)="selectZodiac(zodiac)"
+          class="relative bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-opacity-20 active:scale-95 sm:hover:scale-105 hover:shadow-2xl p-2 sm:p-3 md:p-4 lg:p-6 ring-2 sm:ring-4 ring-transparent"
+        >
+          <div class="text-center">
+            <div class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1 sm:mb-2">{{ zodiac.emoji }}</div>
+            <div class="text-xs sm:text-sm md:text-base text-purple-900 font-bold">{{ zodiac.name }}</div>
+            <div class="text-xs md:text-sm text-purple-800 mt-0.5 sm:mt-1">{{ zodiac.dates }}</div>
+          </div>
+        </button>
+      }
     }
   </div>
 
-  <!-- 選中星座的詳細信息 -->
+  <!-- 選中星座的配對信息 -->
   @if (selectedZodiac(); as selected) {
     <div class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 max-w-xs sm:max-w-sm md:max-w-md w-full text-center animate-fadeIn">
       <div class="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">{{ selected.emoji }}</div>
@@ -64,18 +68,26 @@
       <p class="text-purple-200 mb-1 sm:mb-2 text-sm sm:text-base">{{ selected.englishName }}</p>
       <p class="text-xs sm:text-sm text-purple-300 mb-3 sm:mb-4">{{ selected.dates }}</p>
 
-      <div class="bg-white bg-opacity-5 rounded-lg p-3 sm:p-4">
+      <div class="bg-white bg-opacity-5 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
+        <h4 class="text-pink-300 font-semibold mb-2 text-sm sm:text-base">💕 最佳配對</h4>
         <p class="text-white text-xs sm:text-sm leading-relaxed">
-          歡迎來到 {{ selected.name }} 的世界！<br>
-          探索更多關於你的星座運勢和特質。
+          {{ getBestMatch(selected.englishName) }}
+        </p>
+      </div>
+
+      <div class="bg-white bg-opacity-5 rounded-lg p-3 sm:p-4">
+        <h4 class="text-yellow-300 font-semibold mb-2 text-sm sm:text-base">⚡ 性格特質</h4>
+        <p class="text-white text-xs sm:text-sm leading-relaxed">
+          {{ getPersonality(selected.englishName) }}
         </p>
       </div>
     </div>
   } @else {
     <div class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 max-w-xs sm:max-w-sm md:max-w-md w-full text-center">
-      <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🌟</div>
+      <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">💕</div>
       <p class="text-white text-base sm:text-lg">請選擇你的星座</p>
-      <p class="text-purple-200 text-xs sm:text-sm mt-2">點擊上方按鈕來查看你的星座資訊</p>
+      <p class="text-purple-200 text-xs sm:text-sm mt-2">點擊上方按鈕來查看配對指數和性格分析</p>
     </div>
   }
-</section>
+  </section>
+</div>
