@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { Home } from './home/home';
-import { ZodiacDetail } from './zodiac-detail/zodiac-detail';
+import { HomeComponent } from './home/home.component';
+import { ZodiacDetailComponent } from './zodiac-detail/zodiac-detail.component';
 
 export const routes: Routes = [
-  { path: '', component: Home },
-  { path: 'zodiac/:zodiac', component: ZodiacDetail },
+  { path: '', component: HomeComponent },
+  { path: 'zodiac-detail/:zodiac', component: ZodiacDetailComponent },
   { path: '**', redirectTo: '' }
 ];

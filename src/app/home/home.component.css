@@ -1,0 +1,31 @@
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+.snap-y::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Apple-style smooth scroll */
+.snap-y {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fade-in animation states */
+.fade-in-section {
+  will-change: transform, opacity;
+}
+
+/* Additional animation for parallax effect */
+@media (prefers-reduced-motion: no-preference) {
+  img {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  section:hover img {
+    transform: scale(1.02);
+  }
+}

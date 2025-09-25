@@ -13,10 +13,10 @@ interface Zodiac {
   selector: 'app-zodiac-detail',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './zodiac-detail.html',
-  styleUrl: './zodiac-detail.css'
+  templateUrl: './zodiac-detail.component.html',
+  styleUrl: './zodiac-detail.component.css'
 })
-export class ZodiacDetail implements OnInit {
+export class ZodiacDetailComponent implements OnInit {
   protected readonly currentZodiac = signal<Zodiac | null>(null);
 
   private readonly zodiacs: Zodiac[] = [
