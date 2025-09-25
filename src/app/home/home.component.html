@@ -1,15 +1,40 @@
-<!-- Full Screen Images with Snap Scroll -->
-<div class="snap-y snap-mandatory overflow-y-scroll h-screen">
+<!-- Full Screen Images with Natural Scroll -->
+<div class="overflow-y-auto overflow-x-hidden">
 
 
-  <!-- 阿皮狗 Section -->
-  <section class="snap-start h-screen w-full flex items-center justify-center bg-black text-white relative">
+  <!-- 阿皮狗 Title Section -->
+  <section *ngIf="showDogTitle()" class="h-screen w-full flex items-center justify-center bg-black text-white">
     <div class="w-full max-w-4xl px-8 text-center">
-      <h2 class="text-6xl font-bold mb-8 fade-in-section" data-animation="fade-up" data-delay="0">阿皮狗</h2>
-      <p class="text-2xl text-gray-300 mb-4 fade-in-section" data-animation="fade-up" data-delay="200">傻狗幫 CEO</p>
-      <p class="text-xl text-gray-400 mb-6 fade-in-section" data-animation="fade-up" data-delay="400">從內湖收容所 幾百隻黑狗中 脫穎而出</p>
-      <p class="text-lg text-gray-500 mb-12 fade-in-section" data-animation="fade-up" data-delay="600">不會後空翻 不會坐下 不會握手</p>
-      <blockquote class="text-3xl font-light italic text-gray-200 fade-in-section" data-animation="fade-up" data-delay="800">
+      <h2 class="text-6xl font-bold">阿皮狗</h2>
+    </div>
+  </section>
+
+  <!-- 阿皮狗 CEO Section -->
+  <section *ngIf="showDogName()" class="h-screen w-full flex items-center justify-center bg-black text-white">
+    <div class="w-full max-w-4xl px-8 text-center">
+      <p class="text-3xl text-gray-300">傻狗幫 CEO</p>
+    </div>
+  </section>
+
+  <!-- 阿皮狗 Story Section -->
+  <section *ngIf="showDogStory()" class="h-screen w-full flex items-center justify-center bg-black text-white">
+    <div class="w-full max-w-4xl px-8 text-center">
+      <p class="text-2xl text-gray-400">從內湖收容所 幾百隻黑狗中 脫穎而出</p>
+    </div>
+  </section>
+
+  <!-- 阿皮狗 Skills Section -->
+  <section *ngIf="showDogSkills()" class="h-screen w-full flex items-center justify-center bg-black text-white">
+    <div class="w-full max-w-4xl px-8 text-center">
+      <p class="text-xl text-gray-500">不會後空翻 不會坐下 不會握手</p>
+    </div>
+  </section>
+
+
+  <!-- 阿皮狗 Quote Section -->
+  <section *ngIf="showDogQuote()" class="h-screen w-full flex items-center justify-center bg-black text-white">
+    <div class="w-full max-w-4xl px-8 text-center">
+      <blockquote class="text-4xl font-light italic text-gray-200">
         "看什麼看 =="
         <footer class="text-lg text-gray-400 mt-4">— 阿皮狗 2025</footer>
       </blockquote>
@@ -18,20 +43,17 @@
 
 
   <!-- 阿皮狗 Image -->
-  <section class="snap-start h-screen w-full relative overflow-hidden">
-    <img
-      src="assets/images/19985_0.jpg"
-      alt="Hero Image 1"
-      class="w-full h-full object-cover"
-    />
+  <section class="h-screen w-full relative overflow-hidden">
+    <img src="assets/images/19985_0.jpg" alt="Hero Image 1" class="w-full h-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
   </section>
 
-  
+
 
   <!-- Zane Section -->
-  <section class="snap-start h-screen w-full flex items-center justify-center bg-gradient-to-b from-black to-gray-900 text-white">
-    <div class="max-w-4xl mx-auto px-8 text-center">
+  <section
+    class="h-screen w-full flex items-center justify-center bg-gradient-to-b from-black to-gray-900 text-white relative">
+    <div class="w-full max-w-4xl px-8 text-center">
       <h2 class="text-6xl font-bold mb-8 fade-in-section" data-animation="fade-up" data-delay="0">Zane</h2>
       <p class="text-2xl text-gray-300 mb-6 fade-in-section" data-animation="fade-up" data-delay="300">傻狗幫 助理</p>
       <p class="text-xl text-gray-400 fade-in-section" data-animation="fade-up" data-delay="600">雖然我是助理 但其實都是給我爸遛</p>
@@ -39,9 +61,10 @@
   </section>
 
   <!-- 個人簡介 Section -->
-  <section class="snap-start h-screen w-full flex items-center justify-center bg-white">
-    <div class="max-w-4xl mx-auto px-8 text-center">
-      <h2 class="text-5xl font-light text-gray-900 mb-8 fade-in-section" data-animation="fade-up" data-delay="0">軟體工程師</h2>
+  <section class="h-screen w-full flex items-center justify-center bg-white relative">
+    <div class="w-full max-w-4xl px-8 text-center">
+      <h2 class="text-5xl font-light text-gray-900 mb-8 fade-in-section" data-animation="fade-up" data-delay="0">軟體工程師
+      </h2>
       <div class="space-y-4 text-2xl text-gray-600">
         <p class="fade-in-section" data-animation="fade-up" data-delay="300">165 水瓶座</p>
         <p class="text-xl text-gray-500 mt-8 fade-in-section" data-animation="fade-up" data-delay="600">偶爾會跟同事抽菸</p>
@@ -50,9 +73,10 @@
   </section>
 
   <!-- 興趣 Section -->
-  <section class="snap-start h-screen w-full flex items-center justify-center bg-gradient-to-b from-gray-100 to-white">
-    <div class="max-w-4xl mx-auto px-8">
-      <p class="text-3xl font-light text-gray-800 text-center mb-12 fade-in-section" data-animation="fade-up" data-delay="0">
+  <section class="h-screen w-full flex items-center justify-center bg-gradient-to-b from-gray-100 to-white relative">
+    <div class="w-full max-w-4xl px-8">
+      <p class="text-3xl font-light text-gray-800 text-center mb-12 fade-in-section" data-animation="fade-up"
+        data-delay="0">
         講什麼喜歡旅遊美食運動都太無聊ㄌ
       </p>
       <div class="space-y-8 text-center">
@@ -73,45 +97,42 @@
   </section>
 
   <!-- Second Image -->
-  <section class="snap-start h-screen w-full relative overflow-hidden">
-    <img
-      src="assets/images/19986_0.jpg"
-      alt="Hero Image 2"
-      class="w-full h-full object-cover"
-    />
+  <section class="h-screen w-full relative overflow-hidden">
+    <img src="assets/images/19986_0.jpg" alt="Hero Image 2" class="w-full h-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/30"></div>
   </section>
 
   <!-- 星座區 -->
-  <section class="snap-start h-screen w-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+  <section
+    class="h-screen w-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
 
-  <!-- 星座區標題 -->
-  <header class="text-center mb-8 sm:mb-10 md:mb-12">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 md:mb-4">💕 星座配對 💕</h2>
-    <p class="text-base sm:text-lg md:text-xl text-purple-200">選擇你的星座，找出最配的另一半</p>
-  </header>
+    <!-- 星座區標題 -->
+    <header class="text-center mb-8 sm:mb-10 md:mb-12">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 md:mb-4">💕 星座配對 💕</h2>
+      <p class="text-base sm:text-lg md:text-xl text-purple-200">選擇你的星座，找出最配的另一半</p>
+    </header>
 
-  <!-- 星座按鈕網格 -->
-  <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mb-6 sm:mb-7 md:mb-8">
-    @for (zodiac of zodiacs; track zodiac.englishName) {
-      <button
-        (click)="selectZodiac(zodiac)"
-        class="relative bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-opacity-20 active:scale-95 sm:hover:scale-105 hover:shadow-2xl p-2 sm:p-3 md:p-4 lg:p-6 ring-2 sm:ring-4 ring-transparent"
-      >
+    <!-- 星座按鈕網格 -->
+    <div
+      class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mb-6 sm:mb-7 md:mb-8">
+      @for (zodiac of zodiacs; track zodiac.englishName) {
+      <button (click)="selectZodiac(zodiac)"
+        class="relative bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-lg sm:rounded-xl transition-all duration-300 hover:bg-opacity-20 active:scale-95 sm:hover:scale-105 hover:shadow-2xl p-2 sm:p-3 md:p-4 lg:p-6 ring-2 sm:ring-4 ring-transparent">
         <div class="text-center">
           <div class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1 sm:mb-2">{{ zodiac.emoji }}</div>
           <div class="text-xs sm:text-sm md:text-base text-purple-900 font-bold">{{ zodiac.name }}</div>
           <div class="text-xs md:text-sm text-purple-800 mt-0.5 sm:mt-1">{{ zodiac.dates }}</div>
         </div>
       </button>
-    }
-  </div>
+      }
+    </div>
 
-  <!-- 提示信息 -->
-  <div class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 max-w-xs sm:max-w-sm md:max-w-md w-full text-center">
-    <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">💕</div>
-    <p class="text-white text-base sm:text-lg">點擊任何星座</p>
-    <p class="text-purple-200 text-xs sm:text-sm mt-2">查看詳細的配對分析和性格特質</p>
-  </div>
+    <!-- 提示信息 -->
+    <div
+      class="bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 max-w-xs sm:max-w-sm md:max-w-md w-full text-center">
+      <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">💕</div>
+      <p class="text-white text-base sm:text-lg">點擊任何星座</p>
+      <p class="text-purple-200 text-xs sm:text-sm mt-2">查看詳細的配對分析和性格特質</p>
+    </div>
   </section>
 </div>

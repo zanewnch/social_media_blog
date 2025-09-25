@@ -1,22 +1,32 @@
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Hide scrollbar but keep functionality */
-.snap-y::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0;
   background: transparent;
-}
-
-/* Apple-style smooth scroll */
-.snap-y {
-  -webkit-overflow-scrolling: touch;
 }
 
 /* Fade-in animation states */
 .fade-in-section {
   will-change: transform, opacity;
+}
+
+/* Scroll-driven fade animation */
+.scroll-fade-section {
+  position: relative;
+}
+
+.scroll-fade-section > div {
+  will-change: opacity, transform;
 }
 
 /* Additional animation for parallax effect */
