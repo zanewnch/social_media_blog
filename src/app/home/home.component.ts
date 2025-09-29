@@ -5,6 +5,8 @@ import { PLATFORM_ID, inject } from '@angular/core';
 import { Zodiac } from '../shared/models/zodiac.interface';
 import { ZODIAC_DATA } from '../shared/data/zodiac.data';
 
+import { logger } from '../shared/config/logger.config';
+
 /**
  * 主頁組件
  * 包含滾動驅動的動畫效果、阿皮狗介紹區塊、星座配對功能
@@ -21,6 +23,8 @@ import { ZODIAC_DATA } from '../shared/data/zodiac.data';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+
+  private readonly COMPONENT_NAME = 'HomeComponent';
 
   /** 控制是否顯示阿皮狗名稱區塊 */
   showDogName: WritableSignal<boolean> = signal(false);
@@ -149,8 +153,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const observer: IntersectionObserver = this.createApidogObserver();
 
     /** 為每個 section 元素註冊 IntersectionObserver */
-    sectionElements.forEach(sectionRef => {
-      observer.observe(sectionRef.nativeElement);
+    sectionElements.forEach((sectionRef, index) => {
+      const element = sectionRef.nativeElement;
+
+      logger.debug(`${this.COMPONENT_NAME}.setupApidogSectionObserver: 註冊觀察器`, {
+        index,
+        className: element.className,
+        id: element.id || 'no-id',
+        tagName: element.tagName,
+        textPreview: element.textContent?.substring(0, 50) || 'no-text'
+      }, `tagName 是指 element tag, like : SECTION, textPreview 是指 element text 的前 50 個字元`);
+
+      observer.observe(element);
     });
   }
 
@@ -176,6 +190,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     return new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry: IntersectionObserverEntry) => {
+
+        if (process.env['NODE_ENV'] === 'development') logger.debug(this.COMPONENT_NAME, 'createApidogObserver', entries);
+
         this.handleSectionIntersection(entry);
       });
     }, observerOptions);
